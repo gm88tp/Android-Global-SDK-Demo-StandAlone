@@ -32,7 +32,7 @@ multiDexEnabled true
 引入以下依赖：
 ```
 implementation fileTree(dir: 'libs', include: ['*.jar'])
-implementation(name: 'Offlinesdk_1.0.5', ext: 'aar')
+implementation(name: 'Offlinesdk_1.1', ext: 'aar')
 implementation 'androidx.appcompat:appcompat:1.0.0'
 implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 // Add dependency crashlytics
