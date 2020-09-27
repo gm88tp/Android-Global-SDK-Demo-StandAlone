@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Demo</string>
+    <!--    to-do-->
+    <string name="facebook_app_id">436121163675645</string>
+    <string name="fb_login_protocol_scheme">fb436121163675645</string>
+</resources>
