@@ -332,12 +332,13 @@ GMSDK.initMainActivity(OverSeaGameActivity.this);
 ```
 GMSDK.doLogin();
 ```
-登录成功或者失败，都可以在回调中得到结果。返回token，示例:
+登录成功或者失败，都可以在回调中得到结果。返回deviceId与uid，示例:
 ```
 JSONObject loginResult = new JSONObject(String.valueOf(msg.obj));
 String deviceId = loginResult.getString("deviceId");
 String uid = loginResult.getString("uid");
 ```
+
 
 ### 3.4发起支付
 当游戏内需发起支付时，应调用此接口
@@ -350,14 +351,14 @@ GMSDK.doPay(Map<String, String> payJson)
 | 字段          | 类型     | 说明                                 |
 | ----------- | ------ | ---------------------------------- |
 | productName | string | 商品名称，会显示在相应支付界面上                   |
-| price       | float  | 商品价格，单位：美元                         |
+| productPrice| float  | 商品价格，单位：美元                         |
 | extra       | string | 订单透传参数，这些参数会在支付回调时一并回传给CP，请CP自行解析  |
-| payStage    | string | 额外支付参数（默认为商品ID）                    |
 | roleId      | string | 待支付角色ID                            |
-| serverId    | string | 待支付角色区服名称或者ID                      |
+| roleName    | string | 待支付角色名                            |
+| serverId    | string | 待支付角色区服ID                      |
 | productId   | string | 商品ID                               |
 | notifyUrl   | string | 支付通知地址，没有的话请不要传递该参数(请求信息内不需要该参数为空) |
-| fromNoLimitPay   | int | 是否是来自任意金额项的充值(1:是来自任意项的充值 不是的情况可以忽略此字段)       
+| serverName  | string | 待支付角色区服名称       
 
 
 调用示例：
@@ -371,7 +372,7 @@ payinfo.put("roleName", "1");
 payinfo.put("serverId", "1");
 payinfo.put("serverName", "1");
 payinfo.put("notifyUrl", "");
-payinfo.put("extra", System.currentTimeMillis() / 1000 + "");
+payinfo.put("extra", XXXXXXXXXXXXXXX");
 GMSDK.doPay(payJson);
 ```
 
@@ -571,12 +572,20 @@ GMSDK.doSetPasteboard(String extra);
 GMSDK.doEventInfo(extra);
 ```
 
-### 4.4打开外部网页接口
-当游戏需要通过外部浏览器打开一个网页时，可以使用此方法，包括但不限定打开Facebook粉丝页，Lobi，Twitter，巴哈姆特等
+### 4.4打开社交平台
+打开各社交平台，如果用户已经安装了该社交平台的客户端，会尝试先拉起该客户端，否则打开该社交平台的网页版本
 接口定义：
 ```
-GMSDK.doOpenURLbyWeb(String url);
+GMSDK.openPlatform(String code,String info,String pageid)
 ```
-| 字段  | 类型     | 说明        |
-| --- | ------ | --------- |
-| url | string | 需要打开的网页地址 |
+| 字段     | 类型     | 说明                                  |
+| ------ | ------ | ----------------------------------- |
+| code   | string | code :1 韩国论坛 2 Facebook 3 洛比 4 应用商店 |
+| info   | string | 链接地址/包名/应用ID (无参数默认给个空字符)           |
+| pageid | sring  | 粉丝页ID(无参数默认给个空字符)                   |
+
+调用示例：
+
+```
+GMSDK.openPlatform(3,https:\/\/www.baidu.com,123456);
+```
