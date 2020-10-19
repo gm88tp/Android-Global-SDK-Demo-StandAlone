@@ -39,7 +39,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation(name: 'Offlinesdk_1.1', ext: 'aar')
+    implementation(name: 'Offlinesdk_1.1.1', ext: 'aar')
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     // Add dependency crashlytics
 
@@ -69,14 +69,7 @@ dependencies {
     implementation 'com.google.ads.mediation:unity:3.4.2.0'
     implementation 'com.ironsource.sdk:mediationsdk:6.16.1'
     implementation 'com.google.ads.mediation:vungle:6.7.0.0'
-    implementation 'com.mintegral.thrid.adapter:admob_adapter:2.2.7'
-    implementation 'com.mintegral.msdk:videojs:14.3.01'
-    implementation 'com.mintegral.msdk:mtgjscommon:14.3.01'
-    implementation 'com.mintegral.msdk:playercommon:14.3.01'
-    implementation 'com.mintegral.msdk:reward:14.3.01'
-    implementation 'com.mintegral.msdk:videocommon:14.3.01'
-    implementation 'com.mintegral.msdk:common:14.3.01'
-    implementation 'com.mintegral.msdk:alphab:14.3.01'
+    implementation 'com.google.android.play:core:1.8.0'
     api 'androidx.multidex:multidex:2.0.1'
     //noinspection GradleCompatible
     api 'androidx.recyclerview:recyclerview:1.1.0'
