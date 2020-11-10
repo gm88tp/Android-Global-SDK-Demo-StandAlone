@@ -1,4 +1,4 @@
-# GM88 Android海外游戏1.1.1版本单机SDK 对接文档
+# GM88 Android海外游戏1.1.2版本单机SDK 对接文档
 
 
 ***请注意：demo内的所有参数均是为了方便展示，接入时请使用运营提供的参数进行接入***
@@ -32,7 +32,7 @@ multiDexEnabled true
 引入以下依赖：
 ```
 implementation fileTree(dir: 'libs', include: ['*.jar'])
-implementation(name: 'Offlinesdk_1.1', ext: 'aar')
+implementation(name: 'Offlinesdk_1.1.2', ext: 'aar')
 implementation 'androidx.appcompat:appcompat:1.0.0'
 implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 // Add dependency crashlytics
@@ -166,12 +166,12 @@ allprojects {
 3）line标签内的channe, 为运营提供的Line登录LineChannelID。
 4）googlead和fbad标签内的内容, 修改为运营提供的相应的广告变现参数。
 5）如果游戏是韩国版本, 需要修改café标签内的相关参数为运营提供的参数。
-6）请修改host标签内的url链接为正式链接, 地址为https://m-xmjen.hkpctimes.com。
+6）出正式包时请修改host标签内的url链接为正式服链接, 地址为https://m-xmjen.hkpctimes.com。
 
 ### 拷贝运营提供的google-services.json文件
 
 拷贝运营提供的google-services.json文件到工程级别的主目录。如果是android studio开发，拷贝到app目录下即可
-**请注意，不要漏加，漏加会影响运行、登录、支付**
+**请注意，demo中没有添加google-services.json，如果要运行demo需要添加，漏加会影响运行、登录**
 
 ### 添加libs下相关aar依赖
 
@@ -353,7 +353,7 @@ GMSDK.doPay(Map<String, String> payJson)
 | notifyUrl   | string | 支付通知地址，没有的话请不要传递该参数(请求信息内不需要该参数为空) |
 | serverName  | string | 待支付角色区服名称       
 
-**请注意，productName、productId需按照计费表内数据传入，否则不会调起支付界面**
+**请注意，productName、productId需按照计费表内数据传入，否则不会创建订单**
 调用示例：
 ```
 Map<String, String> payinfo = new HashMap<>();
@@ -378,7 +378,7 @@ GMSDK.doSpot(String spotJson)
 | 字段       | 类型     | 说明                                                                                    |
 | -------- | ------ | ------------------------------------------------------------------------------------- |
 | spotType | string | 事件类型，取值为：1：创建角色   2：完成新手引导 3：玩家等级变化后上传 4:玩家选择完区服                                      |
-| extra    | json   | 这是角色具体信息，格式为Json，包括4种信息：roleId: 角色ID, roleName： 角色名，roleServer：  角色区服，roleLevel： 角色等级 |
+| extra    | json   | 这是角色具体信息，格式为Json，包括6种信息：roleId: 角色ID, roleName： 角色名，roleServer： 区服ID， serverName ：区服名字，roleLevel： 角色等级，vipLevel：角色Vip等级 |
 
 **请注意，玩家选择完区服上报必须接入，否则会影响SDK功能，其余上报不接入会影响打点数据准确性**
 调用示例：
@@ -388,9 +388,11 @@ try {
     spotJson.put("spotType","3");
     JSONObject extra = new JSONObject();
     extra.put("roleName","等级回传");
-    extra.put("roleServer","22");
     extra.put("roleLevel","11");
     extra.put("roleId","111");
+    extra.put("roleServer","22");
+    extra.put("serverName","1服");
+    extra.put("vipLevel","1")
     spotJson.put("extra",extra.toString());
 } catch (JSONException e) {
     e.printStackTrace();

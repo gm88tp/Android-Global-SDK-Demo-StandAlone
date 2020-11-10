@@ -25,7 +25,6 @@ import com.gm88.gmutils.ToastHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,7 +70,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         finish();
                         break;
                     case GMActionCode.ACTION_LOGIN_SUCC://登录成功
-                        String spot = "{\"spotType\":4,\"extra\":{\"roleName\":\"IleanaJudd\",\"roleServer\":55,\"roleLevel\":1,\"roleId\":" + new Date().getTime() + "}}";
+                        String spot = "{\"spotType\":4,\"extra\":{\"roleName\":\"IleanaJudd\",\"vipLevel\":5,\"serverName\":1服,\"roleServer\":55,\"roleLevel\":1,\"roleId\":1234567" + "}}";
                         GMSDK.doSpot(spot);
                         JSONObject result = null;
                         try {
