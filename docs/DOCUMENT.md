@@ -87,9 +87,9 @@
 在工程级别的build.gradle 文件内增加以下插件
   
 ```
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'com.google.gms.google-services'
 ```
 
 在项目级别的build.gradle 文件内增加以下内容
@@ -99,11 +99,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-
-        maven {
-            url 'https://maven.fabric.io/public'
-        }
-
         mavenCentral()
         maven {
             url 'https://maven.google.com/'
@@ -113,14 +108,13 @@ buildscript {
         maven {
             url "https://dl.bintray.com/ironsource-mobile/android-sdk"
         }
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
 
         classpath 'com.google.gms:google-services:4.3.3'
 
-        classpath 'io.fabric.tools:gradle:1.31.0'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
 
         // Add the dependency for the Performance Monitoring plugin
         classpath 'com.google.firebase:perf-plugin:1.3.1'  // Performance Monitoring plugin
