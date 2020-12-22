@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-    <gmsdk appId="1676" appReleaseId="1676001" appMode="debug" sdkVersion="1.1.2" />
+    <gmsdk appId="1676" appReleaseId="1676001" appMode="debug" sdkVersion="1.1.4" />
     <host url="https://mdemo.hkpctimes.com" />
     <google
         billing="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApzg1S2ZxpPnGgd9n6oFb3e0OgCuyGO84gUG+Y4p3Lsl1ONe74540Z6SE1rJbUHzJEUwYyRzKHYwPzYi0UyFiI109lQEqicA04RCzQZmUtxH3UsMbmO4NGX97kEQsa6D+o0akvDh1WPMNaS9XIJPw6VWvVJkLp5OADX3es9eBPbhruZa7Lr0gnZDG689P/BL5jSA7TpRhju5ZsETVbgtXO+yhdbO8qD9Bjm2ZeeVLDmgyGj9s9fgzY9tifA0QVYjgFv9OEtk0UAB9vDmqxXN9sPLgKi1QGJT8zDkZ1SnW8hg0Jy7uwpoFFuLydxrzVQCuRNcLfo0cztNA/KI5L//O2QIDAQAB" />
